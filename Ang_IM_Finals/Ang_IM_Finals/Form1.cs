@@ -27,6 +27,8 @@ namespace Ang_IM_Finals
         Dictionary<string, int> prodType = new Dictionary<string, int>();
         DatabaseCommand databaseCommand = new DatabaseCommand();
 
+        //kod deneme1
+
         //List<string> queryQueue = new List<string>();
 
         private void Form1_Load(object sender, EventArgs e)
