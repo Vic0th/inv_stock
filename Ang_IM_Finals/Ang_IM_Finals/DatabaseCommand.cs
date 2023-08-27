@@ -16,7 +16,7 @@ namespace Ang_IM_Finals
         MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
         DataTable dataTable = new DataTable();
 
-        private string connectionString = "server=localhost; database=db_ang_deliverables; user=root; port=3306;";
+        private string connectionString = "server=localhost; database=inventory_db; user=root; port=3306;";
 
         public void DatabaseConnect()
         {
