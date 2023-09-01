@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ang_IM_Finals
+namespace Inventory_track
 {
     static class Program
     {

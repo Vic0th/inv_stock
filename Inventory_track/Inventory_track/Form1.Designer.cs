@@ -1,4 +1,4 @@
-﻿namespace Ang_IM_Finals
+﻿namespace Inventory_track
 {
     partial class Form1
     {

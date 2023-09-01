@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Ang_IM_Finals
+namespace Inventory_track
 {
     class DatabaseCommand
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5A8B1287-7678-477E-ACD6-6087DAA73FC8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Ang_IM_Finals</RootNamespace>
-    <AssemblyName>Ang_IM_Finals</AssemblyName>
+    <RootNamespace>Inventory_track</RootNamespace>
+    <AssemblyName>Inventory_track</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -70,6 +70,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
