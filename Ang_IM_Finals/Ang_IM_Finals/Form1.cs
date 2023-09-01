@@ -27,9 +27,6 @@ namespace Ang_IM_Finals
         Dictionary<string, int> prodType = new Dictionary<string, int>();
         DatabaseCommand databaseCommand = new DatabaseCommand();
 
-        //kod deneme1
-
-        //List<string> queryQueue = new List<string>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -44,11 +41,7 @@ namespace Ang_IM_Finals
             stringQuery = "SELECT productType_id, productType_name FROM ProductType";
             databaseCommand.LoadOptions(stringQuery, comboProductType, prodType);
 
-            /*queryQueue.Add(stringQuery);
-            for (int i = 0; i < queryQueue.Count; i++) {
-                databaseCommand.DisplayRecords(queryQueue[i], dataGridProducts);
-            }*/
-
+      
             Reset();
         }
 
@@ -206,6 +199,16 @@ namespace Ang_IM_Finals
         {
             stringQuery = "SELECT Product.product_id 'Product ID', Product.product_name 'Product Name', ProductType.productType_name 'Type', ProductCategory.productCategory_name 'Category', Product.product_description 'Description', Product.product_price 'Price', Product.product_quantity 'Qty.', ProductUnit.productUnit_name 'Unit' FROM Product INNER JOIN ProductUnit USING (productUnit_id) INNER JOIN ProductType USING (productType_id) INNER JOIN ProductCategory USING (productCategory_id) WHERE Product.product_id LIKE '%" + textSearch.Text + "%' OR Product.product_name LIKE '%" + textSearch.Text + "%'";
             databaseCommand.DisplayRecords(stringQuery, dataGridProducts);
+        }
+
+        private void labelProductName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelHeader_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

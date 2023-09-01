@@ -29,6 +29,8 @@
         {
             this.dataGridProducts = new System.Windows.Forms.DataGridView();
             this.groupBoxFields = new System.Windows.Forms.GroupBox();
+            this.groupBoxID = new System.Windows.Forms.GroupBox();
+            this.labelID = new System.Windows.Forms.Label();
             this.textDescription = new System.Windows.Forms.TextBox();
             this.labelDescription = new System.Windows.Forms.Label();
             this.textPrice = new System.Windows.Forms.TextBox();
@@ -46,8 +48,6 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.labelHeader = new System.Windows.Forms.Label();
-            this.groupBoxID = new System.Windows.Forms.GroupBox();
-            this.labelID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).BeginInit();
@@ -83,13 +83,33 @@
             this.groupBoxFields.Controls.Add(this.labelProductType);
             this.groupBoxFields.Controls.Add(this.textProductName);
             this.groupBoxFields.Controls.Add(this.labelProductName);
-            this.groupBoxFields.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxFields.Location = new System.Drawing.Point(12, 49);
             this.groupBoxFields.Name = "groupBoxFields";
             this.groupBoxFields.Size = new System.Drawing.Size(279, 374);
             this.groupBoxFields.TabIndex = 1;
             this.groupBoxFields.TabStop = false;
             this.groupBoxFields.Text = "Fields";
+            // 
+            // groupBoxID
+            // 
+            this.groupBoxID.Controls.Add(this.labelID);
+            this.groupBoxID.Location = new System.Drawing.Point(13, 17);
+            this.groupBoxID.Name = "groupBoxID";
+            this.groupBoxID.Size = new System.Drawing.Size(48, 56);
+            this.groupBoxID.TabIndex = 13;
+            this.groupBoxID.TabStop = false;
+            this.groupBoxID.Text = "ID";
+            // 
+            // labelID
+            // 
+            this.labelID.AutoSize = true;
+            this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelID.Location = new System.Drawing.Point(6, 24);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(32, 18);
+            this.labelID.TabIndex = 0;
+            this.labelID.Text = "N/A";
             // 
             // textDescription
             // 
@@ -103,10 +123,10 @@
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDescription.Location = new System.Drawing.Point(7, 190);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(92, 20);
+            this.labelDescription.Size = new System.Drawing.Size(91, 18);
             this.labelDescription.TabIndex = 10;
             this.labelDescription.Text = "Description :";
             // 
@@ -121,10 +141,10 @@
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPrice.Location = new System.Drawing.Point(7, 156);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(48, 20);
+            this.labelPrice.Size = new System.Drawing.Size(50, 18);
             this.labelPrice.TabIndex = 8;
             this.labelPrice.Text = "Price :";
             // 
@@ -139,10 +159,10 @@
             // labelQuantity
             // 
             this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelQuantity.Location = new System.Drawing.Point(7, 119);
             this.labelQuantity.Name = "labelQuantity";
-            this.labelQuantity.Size = new System.Drawing.Size(74, 20);
+            this.labelQuantity.Size = new System.Drawing.Size(70, 18);
             this.labelQuantity.TabIndex = 6;
             this.labelQuantity.Text = "Quantity :";
             // 
@@ -158,10 +178,10 @@
             // labelUnit
             // 
             this.labelUnit.AutoSize = true;
-            this.labelUnit.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUnit.Location = new System.Drawing.Point(141, 119);
             this.labelUnit.Name = "labelUnit";
-            this.labelUnit.Size = new System.Drawing.Size(43, 20);
+            this.labelUnit.Size = new System.Drawing.Size(42, 18);
             this.labelUnit.TabIndex = 4;
             this.labelUnit.Text = "Unit :";
             // 
@@ -177,12 +197,12 @@
             // labelProductType
             // 
             this.labelProductType.AutoSize = true;
-            this.labelProductType.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProductType.Location = new System.Drawing.Point(7, 83);
             this.labelProductType.Name = "labelProductType";
-            this.labelProductType.Size = new System.Drawing.Size(104, 20);
+            this.labelProductType.Size = new System.Drawing.Size(104, 18);
             this.labelProductType.TabIndex = 2;
-            this.labelProductType.Text = "Product Type :";
+            this.labelProductType.Text = "Type :";
             // 
             // textProductName
             // 
@@ -195,17 +215,18 @@
             // labelProductName
             // 
             this.labelProductName.AutoSize = true;
-            this.labelProductName.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProductName.Location = new System.Drawing.Point(72, 24);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(112, 20);
+            this.labelProductName.Size = new System.Drawing.Size(112, 18);
             this.labelProductName.TabIndex = 0;
-            this.labelProductName.Text = "Product Name :";
+            this.labelProductName.Text = "Name :";
+            this.labelProductName.Click += new System.EventHandler(this.labelProductName_Click);
             // 
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.LimeGreen;
-            this.buttonSave.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSave.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonSave.Location = new System.Drawing.Point(12, 429);
             this.buttonSave.Name = "buttonSave";
@@ -219,7 +240,7 @@
             // buttonUpdate
             // 
             this.buttonUpdate.BackColor = System.Drawing.Color.DodgerBlue;
-            this.buttonUpdate.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonUpdate.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonUpdate.Location = new System.Drawing.Point(156, 429);
             this.buttonUpdate.Name = "buttonUpdate";
@@ -232,7 +253,7 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonClear.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonClear.Location = new System.Drawing.Point(12, 494);
             this.buttonClear.Name = "buttonClear";
@@ -245,7 +266,7 @@
             // buttonDelete
             // 
             this.buttonDelete.BackColor = System.Drawing.Color.Red;
-            this.buttonDelete.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonDelete.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonDelete.Location = new System.Drawing.Point(157, 494);
             this.buttonDelete.Name = "buttonDelete";
@@ -259,40 +280,21 @@
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
-            this.labelHeader.Font = new System.Drawing.Font("Kozuka Gothic Pro B", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHeader.Location = new System.Drawing.Point(43, 13);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(219, 30);
+            this.labelHeader.Size = new System.Drawing.Size(252, 25);
             this.labelHeader.TabIndex = 6;
-            this.labelHeader.Text = "BUYSOME DATABASE";
-            // 
-            // groupBoxID
-            // 
-            this.groupBoxID.Controls.Add(this.labelID);
-            this.groupBoxID.Location = new System.Drawing.Point(13, 17);
-            this.groupBoxID.Name = "groupBoxID";
-            this.groupBoxID.Size = new System.Drawing.Size(48, 56);
-            this.groupBoxID.TabIndex = 13;
-            this.groupBoxID.TabStop = false;
-            this.groupBoxID.Text = "ID";
-            // 
-            // labelID
-            // 
-            this.labelID.AutoSize = true;
-            this.labelID.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelID.Location = new System.Drawing.Point(6, 24);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(36, 20);
-            this.labelID.TabIndex = 0;
-            this.labelID.Text = "N/A";
+            this.labelHeader.Text = "DATABASE";
+            this.labelHeader.Click += new System.EventHandler(this.labelHeader_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Kozuka Gothic Pro R", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(300, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 22);
+            this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 14;
             this.label1.Text = "Search :";
             // 
@@ -321,7 +323,7 @@
             this.Controls.Add(this.groupBoxFields);
             this.Controls.Add(this.dataGridProducts);
             this.Name = "Form1";
-            this.Text = "Buysome Depot Consumer Goods Trading";
+            this.Text = "Inventory";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
             this.groupBoxFields.ResumeLayout(false);

@@ -22,9 +22,7 @@ namespace Ang_IM_Finals
         {
             databaseConnection = new MySqlConnection(connectionString);
 
-            // databaseConnection.Open();
-            // MessageBox.Show("Test Connection Successful!");
-            // databaseConnection.Close();
+        
         }
 
         public void DisplayRecords(string SQL, DataGridView dataGridView)
@@ -54,9 +52,7 @@ namespace Ang_IM_Finals
                 dict.Add(row.ItemArray[1].ToString(), Convert.ToInt32(row.ItemArray[0]));
                 }
 
-            /*foreach (KeyValuePair<string, int> entry in dict) {
-                Console.WriteLine("{0} and {1}", entry.Key, entry.Value);
-            }*/
+          
 
             databaseConnection.Close();
         }
@@ -69,12 +65,7 @@ namespace Ang_IM_Finals
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.ExecuteNonQuery();
 
-            /*try {
-                sqlCommand.ExecuteNonQuery();
-            }
-            catch (MySqlException e) {
-                MessageBox.Show("Please do not leave any important fields blank.");
-            }*/
+            
 
             databaseConnection.Close();
         }
