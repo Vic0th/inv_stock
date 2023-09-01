@@ -323,7 +323,7 @@
             this.Controls.Add(this.groupBoxFields);
             this.Controls.Add(this.dataGridProducts);
             this.Name = "Form1";
-            this.Text = "Inventory";
+            this.Text = "Inventory Track";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProducts)).EndInit();
             this.groupBoxFields.ResumeLayout(false);
