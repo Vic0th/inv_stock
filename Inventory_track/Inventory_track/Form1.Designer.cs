@@ -89,7 +89,7 @@
             this.groupBoxFields.Size = new System.Drawing.Size(279, 374);
             this.groupBoxFields.TabIndex = 1;
             this.groupBoxFields.TabStop = false;
-            this.groupBoxFields.Text = "Fields";
+            this.groupBoxFields.Text = "Properties";
             // 
             // groupBoxID
             // 
@@ -106,10 +106,10 @@
             this.labelID.AutoSize = true;
             this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelID.Location = new System.Drawing.Point(6, 24);
-            this.labelID.Name = "labelID";
+            this.labelID.Name = "ID";
             this.labelID.Size = new System.Drawing.Size(32, 18);
             this.labelID.TabIndex = 0;
-            this.labelID.Text = "N/A";
+            this.labelID.Text = " ";
             // 
             // textDescription
             // 
@@ -239,7 +239,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.LimeGreen;
+            this.buttonUpdate.BackColor = System.Drawing.Color.DarkGreen;
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonUpdate.ForeColor = System.Drawing.SystemColors.Control;
             this.buttonUpdate.Location = new System.Drawing.Point(856, 429);
@@ -253,6 +253,9 @@
             // 
             // buttonClear
             // 
+            
+
+            this.buttonUpdate.BackColor = System.Drawing.Color.Red;
             this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonClear.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonClear.Location = new System.Drawing.Point(990, 494);
@@ -260,7 +263,7 @@
             this.buttonClear.Size = new System.Drawing.Size(135, 56);
             this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "CLEAR";
-            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonDelete
