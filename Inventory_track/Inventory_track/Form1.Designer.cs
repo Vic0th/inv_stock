@@ -117,7 +117,7 @@
             this.textDescription.Location = new System.Drawing.Point(11, 213);
             this.textDescription.Multiline = true;
             this.textDescription.Name = "textDescription";
-            this.textDescription.Size = new System.Drawing.Size(257, 149);
+            this.textDescription.Size = new System.Drawing.Size(240, 100);
             this.textDescription.TabIndex = 12;
             // 
             // labelDescription
@@ -160,9 +160,9 @@
             // 
             this.labelQuantity.AutoSize = true;
             this.labelQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuantity.Location = new System.Drawing.Point(7, 119);
+            this.labelQuantity.Location = new System.Drawing.Point(5, 117);
             this.labelQuantity.Name = "labelQuantity";
-            this.labelQuantity.Size = new System.Drawing.Size(70, 18);
+            this.labelQuantity.Size = new System.Drawing.Size(90, 18);
             this.labelQuantity.TabIndex = 6;
             this.labelQuantity.Text = "Quantity :";
             // 
@@ -170,7 +170,7 @@
             // 
             this.comboUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboUnit.FormattingEnabled = true;
-            this.comboUnit.Location = new System.Drawing.Point(190, 115);
+            this.comboUnit.Location = new System.Drawing.Point(200, 152);
             this.comboUnit.Name = "comboUnit";
             this.comboUnit.Size = new System.Drawing.Size(78, 26);
             this.comboUnit.TabIndex = 5;
@@ -179,7 +179,7 @@
             // 
             this.labelUnit.AutoSize = true;
             this.labelUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUnit.Location = new System.Drawing.Point(141, 119);
+            this.labelUnit.Location = new System.Drawing.Point(155, 155);
             this.labelUnit.Name = "labelUnit";
             this.labelUnit.Size = new System.Drawing.Size(42, 18);
             this.labelUnit.TabIndex = 4;
@@ -189,7 +189,7 @@
             // 
             this.comboProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboProductType.FormattingEnabled = true;
-            this.comboProductType.Location = new System.Drawing.Point(114, 80);
+            this.comboProductType.Location = new System.Drawing.Point(74, 80);
             this.comboProductType.Name = "comboProductType";
             this.comboProductType.Size = new System.Drawing.Size(154, 26);
             this.comboProductType.TabIndex = 3;
@@ -228,9 +228,9 @@
             this.buttonSave.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSave.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSave.Location = new System.Drawing.Point(990, 429);
+            this.buttonSave.Location = new System.Drawing.Point(990, 380);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(135, 56);
+            this.buttonSave.Size = new System.Drawing.Size(120, 56);
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "SAVE";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -242,9 +242,9 @@
             this.buttonUpdate.BackColor = System.Drawing.Color.DarkGreen;
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonUpdate.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonUpdate.Location = new System.Drawing.Point(856, 429);
+            this.buttonUpdate.Location = new System.Drawing.Point(856, 380);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(135, 56);
+            this.buttonUpdate.Size = new System.Drawing.Size(120, 56);
             this.buttonUpdate.TabIndex = 3;
             this.buttonUpdate.Text = "UPDATE";
             this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -258,9 +258,9 @@
             this.buttonUpdate.BackColor = System.Drawing.Color.Red;
             this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonClear.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonClear.Location = new System.Drawing.Point(990, 494);
+            this.buttonClear.Location = new System.Drawing.Point(990, 450);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(135, 56);
+            this.buttonClear.Size = new System.Drawing.Size(120, 56);
             this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "CLEAR";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -271,9 +271,9 @@
             this.buttonDelete.BackColor = System.Drawing.Color.Red;
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonDelete.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDelete.Location = new System.Drawing.Point(856, 494);
+            this.buttonDelete.Location = new System.Drawing.Point(856, 450);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(135, 56);
+            this.buttonDelete.Size = new System.Drawing.Size(120, 56);
             this.buttonDelete.TabIndex = 5;
             this.buttonDelete.Text = "DELETE";
             this.buttonDelete.UseVisualStyleBackColor = false;
