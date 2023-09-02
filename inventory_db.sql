@@ -1,42 +1,34 @@
 DROP DATABASE IF EXISTS inventory_db;
 CREATE DATABASE inventory_db;
 USE inventory_db;
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
--- City tablosunu oluşturduğum kısım
 
 DROP TABLE IF EXISTS `city`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `city` (
   `city_id` int(8) NOT NULL AUTO_INCREMENT,
   `city_name` varchar(50) NOT NULL,
   PRIMARY KEY (`city_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- City tablosuna veri eklediğim kısım
 
 LOCK TABLES `city` WRITE;
-/*!40000 ALTER TABLE `city` DISABLE KEYS */;
 INSERT INTO `city` VALUES (1,'Davao City'),(2,'General Santos City'),(3,'Digos'),(4,'Butuan'),(5,'Iligan'),(6,'N/A');
-/*!40000 ALTER TABLE `city` ENABLE KEYS */;
 UNLOCK TABLES;
 
--- Customer tablosunu oluşturduğum kısım
+DROP TABLE IF EXISTS `street`;
+CREATE TABLE `street` (
+  `street_id` int(8) NOT NULL AUTO_INCREMENT,
+  `street_name` varchar(50) NOT NULL,
+  `city_id` int(8) DEFAULT NULL,
+  PRIMARY KEY (`street_id`),
+  UNIQUE KEY `street_name` (`street_name`),
+  KEY `city_id` (`city_id`),
+  CONSTRAINT `street_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `city` (`city_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `street` WRITE;
+INSERT INTO `street` VALUES (1,'San Pedro Street',1),(2,'Uyanguren',1),(3,'Quimpo Boulevard',1),(4,'Bolton Street',1),(5,'Acacia Street',1),(6,'N/A',6);
+UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `customer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customer` (
   `customer_id` int(8) NOT NULL AUTO_INCREMENT,
   `customer_lastName` varchar(30) NOT NULL,
@@ -50,21 +42,24 @@ CREATE TABLE `customer` (
   KEY `street_id` (`street_id`),
   CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`street_id`) REFERENCES `street` (`street_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Customer tablosuna veri eklediğim kısım
 
 LOCK TABLES `customer` WRITE;
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 INSERT INTO `customer` VALUES (1,'Ang','Matthew Szenel','Seng',NULL,'091711599','msAng@mcm.edu.ph',1),(2,'Baste','Martzel','','N/A','095512129','mBaste@mcm.edu.ph',2),(3,'Luh','Bee','','N/A','N/A','N/A',3),(4,'Kay','Luh','','N/A','N/A','N/A',4),(5,'Bay','Clark','Su','123456789',NULL,NULL,5),(13,'Bai','Clark','Su','123456789',NULL,NULL,5);
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
--- Invoice tablosunu oluşturduğum kısım
+DROP TABLE IF EXISTS `paymentstatus`;
+CREATE TABLE `paymentstatus` (
+  `paymentStatus_id` int(2) NOT NULL AUTO_INCREMENT,
+  `paymentStatus_status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`paymentStatus_id`),
+  UNIQUE KEY `paymentStatus_status` (`paymentStatus_status`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `paymentstatus` WRITE;
+INSERT INTO `paymentstatus` VALUES (1,'Is Paid'),(2,'Not Yet Paid');
+UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `invoice`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `invoice` (
   `invoice_id` int(8) NOT NULL AUTO_INCREMENT,
   `customer_id` int(8) DEFAULT NULL,
@@ -76,42 +71,51 @@ CREATE TABLE `invoice` (
   CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
   CONSTRAINT `invoice_ibfk_2` FOREIGN KEY (`paymentStatus_id`) REFERENCES `paymentstatus` (`paymentStatus_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Invoice tablosuna veri eklediğim kısım
 
 LOCK TABLES `invoice` WRITE;
-/*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
 INSERT INTO `invoice` VALUES (1,1,'2022-02-09',1),(2,2,'2023-01-09',1),(3,3,'2015-12-15',1),(4,4,'2019-05-13',2),(5,5,'2020-07-03',2);
-/*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
 UNLOCK TABLES;
 
--- Paymentstatus tablosunu oluşturduğum kısım
+DROP TABLE IF EXISTS `productcategory`;
+CREATE TABLE `productcategory` (
+  `productCategory_id` int(8) NOT NULL AUTO_INCREMENT,
+  `productCategory_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`productCategory_id`),
+  UNIQUE KEY `productCategory_name` (`productCategory_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `paymentstatus`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `paymentstatus` (
-  `paymentStatus_id` int(2) NOT NULL AUTO_INCREMENT,
-  `paymentStatus_status` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`paymentStatus_id`),
-  UNIQUE KEY `paymentStatus_status` (`paymentStatus_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Paymentstatus tablosuna veri eklediğim kısım
-
-LOCK TABLES `paymentstatus` WRITE;
-/*!40000 ALTER TABLE `paymentstatus` DISABLE KEYS */;
-INSERT INTO `paymentstatus` VALUES (1,'Is Paid'),(2,'Not Yet Paid');
-/*!40000 ALTER TABLE `paymentstatus` ENABLE KEYS */;
+LOCK TABLES `productcategory` WRITE;
+INSERT INTO `productcategory` VALUES (4,'Computer Parts'),(5,'Electronics'),(3,'Office Supplies'),(6,'Pet Supplies'),(1,'School Supplies');
 UNLOCK TABLES;
 
--- Product tablosunu oluşturduğum kısım
+DROP TABLE IF EXISTS `producttype`;
+CREATE TABLE `producttype` (
+  `productType_id` int(8) NOT NULL AUTO_INCREMENT,
+  `productType_name` varchar(50) NOT NULL,
+  `productCategory_id` int(8) DEFAULT NULL,
+  PRIMARY KEY (`productType_id`),
+  UNIQUE KEY `productType_name` (`productType_name`),
+  KEY `productCategory_id` (`productCategory_id`),
+  CONSTRAINT `producttype_ibfk_1` FOREIGN KEY (`productCategory_id`) REFERENCES `productcategory` (`productCategory_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `producttype` WRITE;
+INSERT INTO `producttype` VALUES (1,'Pencil',1),(2,'Motherboard',4),(3,'CPU',4),(4,'GPU',4),(5,'Keyboard',4),(6,'Headphones',5),(12,'Printer',5);
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `productunit`;
+CREATE TABLE `productunit` (
+  `productUnit_id` int(3) NOT NULL AUTO_INCREMENT,
+  `productUnit_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`productUnit_id`),
+  UNIQUE KEY `productUnit_name` (`productUnit_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `productunit` WRITE;
+INSERT INTO `productunit` VALUES (5,'Bag'),(4,'Bottle'),(2,'Box'),(3,'Pack'),(1,'Pcs');
+UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `product`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
   `product_id` int(8) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(50) NOT NULL,
@@ -126,87 +130,12 @@ CREATE TABLE `product` (
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`productType_id`) REFERENCES `producttype` (`productType_id`),
   CONSTRAINT `product_ibfk_2` FOREIGN KEY (`productUnit_id`) REFERENCES `productunit` (`productUnit_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Product tablosuna veri eklediğim kısım
 
 LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` VALUES (1,'Koss KSC75',6,'Clip-on headphones',1,10,1200.00),(2,'Moondrop Chu',6,'IEMs',1,10,900.99),(3,'Canon Printer',12,'Canon Printer',1,1,20000.00),(4,'Mongol Pencil No. 3',1,'Mongol Pencil Good',1,100,20.00),(5,'Dell Keyboard',5,'Cheap office keyboard',1,10,200.00),(18,'Salnotes Zero',6,'IEMs',1,10,900.99),(19,'asf',6,'test',1,1,100.00),(20,'asdf',6,'',1,1,1.00);
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
-
--- Productcategory tablosunu oluşturduğum kısım
-
-DROP TABLE IF EXISTS `productcategory`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `productcategory` (
-  `productCategory_id` int(8) NOT NULL AUTO_INCREMENT,
-  `productCategory_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`productCategory_id`),
-  UNIQUE KEY `productCategory_name` (`productCategory_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Productcategory tablosuna veri eklediğim kısım
-
-LOCK TABLES `productcategory` WRITE;
-/*!40000 ALTER TABLE `productcategory` DISABLE KEYS */;
-INSERT INTO `productcategory` VALUES (4,'Computer Parts'),(5,'Electronics'),(3,'Office Supplies'),(6,'Pet Supplies'),(1,'School Supplies');
-/*!40000 ALTER TABLE `productcategory` ENABLE KEYS */;
-UNLOCK TABLES;
-
--- Producttype tablosunu oluşturduğum kısım
-
-DROP TABLE IF EXISTS `producttype`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `producttype` (
-  `productType_id` int(8) NOT NULL AUTO_INCREMENT,
-  `productType_name` varchar(50) NOT NULL,
-  `productCategory_id` int(8) DEFAULT NULL,
-  PRIMARY KEY (`productType_id`),
-  UNIQUE KEY `productType_name` (`productType_name`),
-  KEY `productCategory_id` (`productCategory_id`),
-  CONSTRAINT `producttype_ibfk_1` FOREIGN KEY (`productCategory_id`) REFERENCES `productcategory` (`productCategory_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Producttype tablosuna veri eklediğim kısım
-
-LOCK TABLES `producttype` WRITE;
-/*!40000 ALTER TABLE `producttype` DISABLE KEYS */;
-INSERT INTO `producttype` VALUES (1,'Pencil',1),(2,'Motherboard',4),(3,'CPU',4),(4,'GPU',4),(5,'Keyboard',4),(6,'Headphones',5),(12,'Printer',5);
-/*!40000 ALTER TABLE `producttype` ENABLE KEYS */;
-UNLOCK TABLES;
-
--- Productunit tablosunu oluşturduğum kısım
-
-DROP TABLE IF EXISTS `productunit`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `productunit` (
-  `productUnit_id` int(3) NOT NULL AUTO_INCREMENT,
-  `productUnit_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`productUnit_id`),
-  UNIQUE KEY `productUnit_name` (`productUnit_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Productunit tablosuna veri eklediğim kısım
-
-LOCK TABLES `productunit` WRITE;
-/*!40000 ALTER TABLE `productunit` DISABLE KEYS */;
-INSERT INTO `productunit` VALUES (5,'Bag'),(4,'Bottle'),(2,'Box'),(3,'Pack'),(1,'Pcs');
-/*!40000 ALTER TABLE `productunit` ENABLE KEYS */;
-UNLOCK TABLES;
-
--- Purchase tablosunu oluşturduğum kısım
 
 DROP TABLE IF EXISTS `purchase`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `purchase` (
   `invoice_id` int(8) NOT NULL,
   `product_id` int(8) NOT NULL,
@@ -216,39 +145,11 @@ CREATE TABLE `purchase` (
   CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoice` (`invoice_id`),
   CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Purchase tablosuna veri eklediğim kısım
 
 LOCK TABLES `purchase` WRITE;
-/*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
 INSERT INTO `purchase` VALUES (1,1,1),(1,2,1),(1,3,1),(2,3,1),(2,5,5);
-/*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
 UNLOCK TABLES;
 
--- Street tablosunu oluşturduğum kısım
-
-DROP TABLE IF EXISTS `street`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `street` (
-  `street_id` int(8) NOT NULL AUTO_INCREMENT,
-  `street_name` varchar(50) NOT NULL,
-  `city_id` int(8) DEFAULT NULL,
-  PRIMARY KEY (`street_id`),
-  UNIQUE KEY `street_name` (`street_name`),
-  KEY `city_id` (`city_id`),
-  CONSTRAINT `street_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `city` (`city_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
--- Street tablosuna veri eklediğim kısım
-
-LOCK TABLES `street` WRITE;
-/*!40000 ALTER TABLE `street` DISABLE KEYS */;
-INSERT INTO `street` VALUES (1,'San Pedro Street',1),(2,'Uyanguren',1),(3,'Quimpo Boulevard',1),(4,'Bolton Street',1),(5,'Acacia Street',1),(6,'N/A',6);
-/*!40000 ALTER TABLE `street` ENABLE KEYS */;
-UNLOCK TABLES;
 
 -- Street_and_city için geçici tablo oluşturduğum kısım
 
