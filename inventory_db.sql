@@ -149,3 +149,212 @@ CREATE TABLE `purchase` (
 LOCK TABLES `purchase` WRITE;
 INSERT INTO `purchase` VALUES (1,1,1),(1,2,1),(1,3,1),(2,3,1),(2,5,5);
 UNLOCK TABLES;
+
+
+-- Street_and_city için geçici tablo oluşturduğum kısım
+
+DROP TABLE IF EXISTS `street_and_city`;
+/*!50001 DROP VIEW IF EXISTS `street_and_city`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `street_and_city` (
+  `street_id` tinyint NOT NULL,
+  `street_name` tinyint NOT NULL,
+  `city_id` tinyint NOT NULL,
+  `city_name` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+-- Type_and_category için geçici tablo oluşturduğum kısım
+
+DROP TABLE IF EXISTS `type_and_category`;
+/*!50001 DROP VIEW IF EXISTS `type_and_category`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `type_and_category` (
+  `productType_id` tinyint NOT NULL,
+  `productType_name` tinyint NOT NULL,
+  `productCategory_id` tinyint NOT NULL,
+  `productCategory_name` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+-- Viewallcustomer için geçici tablo oluşturduğum kısım
+
+DROP TABLE IF EXISTS `viewallcustomer`;
+/*!50001 DROP VIEW IF EXISTS `viewallcustomer`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewallcustomer` (
+  `customer_id` tinyint NOT NULL,
+  `customer_lastName` tinyint NOT NULL,
+  `customer_firstName` tinyint NOT NULL,
+  `customer_middleName` tinyint NOT NULL,
+  `customer_TIN` tinyint NOT NULL,
+  `customer_contact` tinyint NOT NULL,
+  `customer_email` tinyint NOT NULL,
+  `street_name` tinyint NOT NULL,
+  `city_name` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+-- Viewallinvoice için geçici tablo oluşturduğum kısım
+
+DROP TABLE IF EXISTS `viewallinvoice`;
+/*!50001 DROP VIEW IF EXISTS `viewallinvoice`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewallinvoice` (
+  `invoice_id` tinyint NOT NULL,
+  `customer_lastName` tinyint NOT NULL,
+  `customer_firstName` tinyint NOT NULL,
+  `customer_middleName` tinyint NOT NULL,
+  `invoice_date` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+-- Viewallproducts için geçici tablo oluşturduğum kısım
+
+DROP TABLE IF EXISTS `viewallproducts`;
+/*!50001 DROP VIEW IF EXISTS `viewallproducts`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewallproducts` (
+  `Product ID` tinyint NOT NULL,
+  `Product Name` tinyint NOT NULL,
+  `Type` tinyint NOT NULL,
+  `Category` tinyint NOT NULL,
+  `Description` tinyint NOT NULL,
+  `Price` tinyint NOT NULL,
+  `Qty.` tinyint NOT NULL,
+  `Unit` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+-- Viewallpurchases için geçici tablo oluşturduğum kısım
+
+DROP TABLE IF EXISTS `viewallpurchases`;
+/*!50001 DROP VIEW IF EXISTS `viewallpurchases`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `viewallpurchases` (
+  `invoice_id` tinyint NOT NULL,
+  `customer_lastName` tinyint NOT NULL,
+  `customer_firstName` tinyint NOT NULL,
+  `product_name` tinyint NOT NULL,
+  `product_price` tinyint NOT NULL,
+  `purchase_quantity` tinyint NOT NULL,
+  `Amount` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+-- Street_and_city geçici tablosunun tamamlanışı
+
+/*!50001 DROP TABLE IF EXISTS `street_and_city`*/;
+/*!50001 DROP VIEW IF EXISTS `street_and_city`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `street_and_city` AS select `street`.`street_id` AS `street_id`,`street`.`street_name` AS `street_name`,`street`.`city_id` AS `city_id`,`city`.`city_name` AS `city_name` from (`street` join `city` on(`street`.`city_id` = `city`.`city_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+-- Type_and_category geçici tablosunun tamamlanışı
+
+/*!50001 DROP TABLE IF EXISTS `type_and_category`*/;
+/*!50001 DROP VIEW IF EXISTS `type_and_category`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `type_and_category` AS select `producttype`.`productType_id` AS `productType_id`,`producttype`.`productType_name` AS `productType_name`,`producttype`.`productCategory_id` AS `productCategory_id`,`productcategory`.`productCategory_name` AS `productCategory_name` from (`producttype` join `productcategory` on(`producttype`.`productCategory_id` = `productcategory`.`productCategory_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+-- Viewallcustomer geçici tablosunun tamamlanışı
+
+/*!50001 DROP TABLE IF EXISTS `viewallcustomer`*/;
+/*!50001 DROP VIEW IF EXISTS `viewallcustomer`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewallcustomer` AS select `customer`.`customer_id` AS `customer_id`,`customer`.`customer_lastName` AS `customer_lastName`,`customer`.`customer_firstName` AS `customer_firstName`,`customer`.`customer_middleName` AS `customer_middleName`,`customer`.`customer_TIN` AS `customer_TIN`,`customer`.`customer_contact` AS `customer_contact`,`customer`.`customer_email` AS `customer_email`,`street`.`street_name` AS `street_name`,`city`.`city_name` AS `city_name` from ((`customer` join `street` on(`customer`.`street_id` = `street`.`street_id`)) join `city` on(`street`.`city_id` = `city`.`city_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+-- Viewallinvoice geçici tablosunun tamamlanışı
+
+/*!50001 DROP TABLE IF EXISTS `viewallinvoice`*/;
+/*!50001 DROP VIEW IF EXISTS `viewallinvoice`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewallinvoice` AS select `invoice`.`invoice_id` AS `invoice_id`,`customer`.`customer_lastName` AS `customer_lastName`,`customer`.`customer_firstName` AS `customer_firstName`,`customer`.`customer_middleName` AS `customer_middleName`,`invoice`.`invoice_date` AS `invoice_date` from (`invoice` join `customer` on(`invoice`.`customer_id` = `customer`.`customer_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+-- Viewallproducts geçici tablosunun tamamlanışı
+
+/*!50001 DROP TABLE IF EXISTS `viewallproducts`*/;
+/*!50001 DROP VIEW IF EXISTS `viewallproducts`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewallproducts` AS select `product`.`product_id` AS `Product ID`,`product`.`product_name` AS `Product Name`,`producttype`.`productType_name` AS `Type`,`productcategory`.`productCategory_name` AS `Category`,`product`.`product_description` AS `Description`,`product`.`product_price` AS `Price`,`product`.`product_quantity` AS `Qty.`,`productunit`.`productUnit_name` AS `Unit` from (((`product` join `productunit` on(`product`.`productUnit_id` = `productunit`.`productUnit_id`)) join `producttype` on(`product`.`productType_id` = `producttype`.`productType_id`)) join `productcategory` on(`producttype`.`productCategory_id` = `productcategory`.`productCategory_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+-- Viewallpurchases geçici tablosunun tamamlanışı
+
+/*!50001 DROP TABLE IF EXISTS `viewallpurchases`*/;
+/*!50001 DROP VIEW IF EXISTS `viewallpurchases`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `viewallpurchases` AS select `invoice`.`invoice_id` AS `invoice_id`,`customer`.`customer_lastName` AS `customer_lastName`,`customer`.`customer_firstName` AS `customer_firstName`,`product`.`product_name` AS `product_name`,`product`.`product_price` AS `product_price`,`purchase`.`purchase_quantity` AS `purchase_quantity`,`product`.`product_price` * `purchase`.`purchase_quantity` AS `Amount` from (((`purchase` join `invoice` on(`purchase`.`invoice_id` = `invoice`.`invoice_id`)) join `customer` on(`invoice`.`customer_id` = `customer`.`customer_id`)) join `product` on(`purchase`.`product_id` = `product`.`product_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
