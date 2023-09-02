@@ -263,7 +263,7 @@
             this.buttonClear.Size = new System.Drawing.Size(135, 56);
             this.buttonClear.TabIndex = 4;
             this.buttonClear.Text = "CLEAR";
-            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonDelete
