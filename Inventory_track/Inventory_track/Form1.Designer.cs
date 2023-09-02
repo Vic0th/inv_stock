@@ -60,7 +60,7 @@
             this.dataGridProducts.AllowUserToAddRows = false;
             this.dataGridProducts.AllowUserToDeleteRows = false;
             this.dataGridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridProducts.Location = new System.Drawing.Point(304, 49);
+            this.dataGridProducts.Location = new System.Drawing.Point(12, 49);
             this.dataGridProducts.Name = "dataGridProducts";
             this.dataGridProducts.ReadOnly = true;
             this.dataGridProducts.Size = new System.Drawing.Size(844, 513);
@@ -84,7 +84,7 @@
             this.groupBoxFields.Controls.Add(this.textProductName);
             this.groupBoxFields.Controls.Add(this.labelProductName);
             this.groupBoxFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxFields.Location = new System.Drawing.Point(12, 49);
+            this.groupBoxFields.Location = new System.Drawing.Point(856, 49);
             this.groupBoxFields.Name = "groupBoxFields";
             this.groupBoxFields.Size = new System.Drawing.Size(279, 374);
             this.groupBoxFields.TabIndex = 1;
@@ -228,7 +228,7 @@
             this.buttonSave.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSave.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSave.Location = new System.Drawing.Point(12, 429);
+            this.buttonSave.Location = new System.Drawing.Point(990, 429);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(135, 56);
             this.buttonSave.TabIndex = 2;
@@ -239,10 +239,10 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonUpdate.BackColor = System.Drawing.Color.LimeGreen;
             this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonUpdate.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonUpdate.Location = new System.Drawing.Point(156, 429);
+            this.buttonUpdate.Location = new System.Drawing.Point(856, 429);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(135, 56);
             this.buttonUpdate.TabIndex = 3;
@@ -255,7 +255,7 @@
             // 
             this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonClear.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonClear.Location = new System.Drawing.Point(12, 494);
+            this.buttonClear.Location = new System.Drawing.Point(990, 494);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(135, 56);
             this.buttonClear.TabIndex = 4;
@@ -268,7 +268,7 @@
             this.buttonDelete.BackColor = System.Drawing.Color.Red;
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonDelete.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDelete.Location = new System.Drawing.Point(157, 494);
+            this.buttonDelete.Location = new System.Drawing.Point(856, 494);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(135, 56);
             this.buttonDelete.TabIndex = 5;
