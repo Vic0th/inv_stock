@@ -1,32 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Inventory_track
-{
-    class DatabaseCommand
-    {
+namespace Inventory_track{
+    class DatabaseCommand{
         MySqlConnection databaseConnection = new MySqlConnection();
         MySqlCommand sqlCommand = new MySqlCommand();
         MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
         DataTable dataTable = new DataTable();
 
+        // Veritabanı bağlantı dizesi
         private string connectionString = "server=localhost; database=inventory_db; user=root; port=3306;";
 
-        public void DatabaseConnect()
-        {
-            databaseConnection = new MySqlConnection(connectionString);
+        // Veritabanı bağlantısını oluşturan metot
+        public void DatabaseConnect() => databaseConnection = new MySqlConnection(connectionString);
 
-        
-        }
-
-        public void DisplayRecords(string SQL, DataGridView dataGridView)
-        {
+        // Kayıtları görüntülemek için kullanılan metot
+        public void DisplayRecords(string SQL, DataGridView dataGridView){
             databaseConnection.Open();
 
             dataAdapter = new MySqlDataAdapter(SQL, databaseConnection);
@@ -38,8 +30,8 @@ namespace Inventory_track
             databaseConnection.Close();
         }
 
-        public void LoadOptions(string SQL, ComboBox comboBox, Dictionary<string, int> dict)
-        {
+        // Seçenekleri yüklemek için kullanılan metot
+        public void LoadOptions(string SQL, ComboBox comboBox, Dictionary<string, int> dict){
             databaseConnection.Open();
 
             dataAdapter = new MySqlDataAdapter(SQL, databaseConnection);
@@ -51,21 +43,16 @@ namespace Inventory_track
                 comboBox.Items.Add(options);
                 dict.Add(row.ItemArray[1].ToString(), Convert.ToInt32(row.ItemArray[0]));
                 }
-
-          
-
             databaseConnection.Close();
         }
 
-        public void SQLManager(string SQL)
-        {
+        // SQL sorgularını yöneten metot
+        public void SQLManager(string SQL){
             databaseConnection.Open();
 
             sqlCommand = new MySqlCommand(SQL, databaseConnection);
             sqlCommand.CommandType = CommandType.Text;
             sqlCommand.ExecuteNonQuery();
-
-            
 
             databaseConnection.Close();
         }

@@ -1,58 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace Inventory_track
 {
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+    public partial class Form1 : Form{
+        public Form1() => InitializeComponent();
 
-        string stringQuery = "";
         string key = "";
         int unitValue = 0;
         int typeValue = 0;
         float price = 0;
         Dictionary<string, int> prodUnit = new Dictionary<string, int>();
         Dictionary<string, int> prodType = new Dictionary<string, int>();
-        DatabaseCommand databaseCommand = new DatabaseCommand();
+        DatabaseCommand dbCom = new DatabaseCommand();
 
+        // Form yüklenirken çalışan metot
+        private void Form1_Load(object sender, EventArgs e){
+            dbCom.DatabaseConnect();
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            databaseCommand.DatabaseConnect();
+            // Tüm ürünleri görüntüle
+            dbCom.DisplayRecords("SELECT * FROM ViewAllProducts", dataGridProducts);
+            dbCom.LoadOptions("SELECT * FROM ProductUnit", comboUnit, prodUnit);
+            dbCom.LoadOptions("SELECT productType_id, productType_name FROM ProductType", comboProductType, prodType);
 
-            stringQuery = "SELECT * FROM ViewAllProducts";
-            databaseCommand.DisplayRecords(stringQuery, dataGridProducts);
-
-            stringQuery = "SELECT * FROM ProductUnit";
-            databaseCommand.LoadOptions(stringQuery, comboUnit, prodUnit);
-
-            stringQuery = "SELECT productType_id, productType_name FROM ProductType";
-            databaseCommand.LoadOptions(stringQuery, comboProductType, prodType);
-
-      
             Reset();
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
+        // Kaydet düğmesine tıklanınca çalışan metot
+        private void buttonSave_Click(object sender, EventArgs e){
             try {
                 InputConversion();
-
-                stringQuery = "INSERT INTO Product VALUES (NULL,'" + textProductName.Text + "'," + typeValue + ",'" + textDescription.Text + "'," + unitValue + "," + textQuantity.Text + "," + price + ")";
-
-                SQLProcess(stringQuery);
+                string query = "INSERT INTO Product VALUES (NULL,'" + textProductName.Text + "'," + typeValue + ",'" + textDescription.Text + "'," + unitValue + "," + textQuantity.Text + "," + price + ")";
+                SQLProcess(query);
                 MessageBox.Show("Record successfully added.");
 
                 Reset();
@@ -68,14 +50,14 @@ namespace Inventory_track
             }
         }
 
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
+        // Güncelle düğmesine tıklanınca çalışan metot
+        private void buttonUpdate_Click(object sender, EventArgs e){
             try {
                 InputConversion();
 
-                stringQuery = "UPDATE Product SET product_name = '" + textProductName.Text + "', productType_id = " + typeValue + ", product_description = '" + textDescription.Text + "', productUnit_id = " + unitValue + ", product_quantity = " + textQuantity.Text + ", product_price = " + price + " WHERE product_id = " + labelID.Text + "";
+                string query = "UPDATE Product SET product_name = '" + textProductName.Text + "', productType_id = " + typeValue + ", product_description = '" + textDescription.Text + "', productUnit_id = " + unitValue + ", product_quantity = " + textQuantity.Text + ", product_price = " + price + " WHERE product_id = " + labelID.Text + "";
 
-                SQLProcess(stringQuery);
+                SQLProcess(query);
                 MessageBox.Show("Record successfully updated.");
 
                 Reset();
@@ -88,26 +70,22 @@ namespace Inventory_track
             }  
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            Reset();
-        }
+        // Temizle düğmesine tıklanınca çalışan metot
+        private void buttonClear_Click(object sender, EventArgs e) => Reset();
 
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
+        // Sil düğmesine tıklanınca çalışan metot
+        private void buttonDelete_Click(object sender, EventArgs e){
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the record?", "Confirmation", MessageBoxButtons.YesNo);
             
             if(dialogResult == DialogResult.Yes) {
-                stringQuery = "DELETE FROM Product WHERE product_id = " + labelID.Text + "";
-
-                SQLProcess(stringQuery);
-
+                string query = "DELETE FROM Product WHERE product_id = " + labelID.Text + "";
+                SQLProcess(query);
                 Reset();
             }        
         }
 
-        private void dataGridProducts_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        // Veritabanında bir hücreye tıklanınca çalışan metot
+        private void dataGridProducts_CellClick(object sender, DataGridViewCellEventArgs e){
             var rowIndex = e.RowIndex;
             labelID.Text = Convert.ToString((int)dataGridProducts[0, rowIndex].Value);
             textProductName.Text = (string)dataGridProducts[1, rowIndex].Value;
@@ -119,20 +97,17 @@ namespace Inventory_track
 
             SetButtons();
         }
-        private void dataGridProducts_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
+        private void dataGridProducts_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e){}
 
-        }
-
-        public void SQLProcess(string stringQuery)
-        {
-            databaseCommand.SQLManager(stringQuery);
+        // SQL işlemlerini gerçekleştiren metot
+        public void SQLProcess(string stringQuery){
+            dbCom.SQLManager(stringQuery);
             stringQuery = "SELECT * FROM ViewAllProducts";
-            databaseCommand.DisplayRecords(stringQuery, dataGridProducts);
+            dbCom.DisplayRecords(stringQuery, dataGridProducts);
         }
 
-        public void InputConversion()
-        {
+        // Kullanıcı girdilerini işleyen metot
+        public void InputConversion(){
             // Dictionary lookup
             key = comboUnit.SelectedItem.ToString();
             prodUnit.TryGetValue(key, out unitValue);
@@ -143,8 +118,8 @@ namespace Inventory_track
             price = (float)Convert.ToDouble(textPrice.Text);
         }
 
-        public void Reset()
-        {
+        // Formu sıfırlayan metot
+        public void Reset(){
             buttonSave.Enabled = true;
             buttonUpdate.Enabled = false;
             buttonDelete.Enabled = false;
@@ -158,57 +133,42 @@ namespace Inventory_track
             comboUnit.SelectedIndex = 0;
         }
 
-        public void SetButtons()
-        {
+        // Düğmeleri ayarlayan metot
+        public void SetButtons(){
             buttonSave.Enabled = false;
             buttonUpdate.Enabled = true;
             buttonDelete.Enabled = true;
         }
 
-        private void buttonSave_EnabledChanged(object sender, EventArgs e)
-        {
-            if (buttonSave.Enabled == false) {
+        private void buttonSave_EnabledChanged(object sender, EventArgs e){
+            if (buttonSave.Enabled == false)
                 buttonSave.BackColor = Color.DarkGray;
-            }
-            else if (buttonSave.Enabled == true) {
+            else if (buttonSave.Enabled == true)
                 buttonSave.BackColor = Color.LimeGreen;
-            }
         }
 
-        private void buttonUpdate_EnabledChanged(object sender, EventArgs e)
-        {
-            if (buttonUpdate.Enabled == false) {
+        private void buttonUpdate_EnabledChanged(object sender, EventArgs e){
+            if (buttonUpdate.Enabled == false) 
                 buttonUpdate.BackColor = Color.DarkGray;
-            }
-            else if (buttonUpdate.Enabled == true) {
+            else if (buttonUpdate.Enabled == true)
                 buttonUpdate.BackColor = Color.DodgerBlue;
-            }
         }
 
-        private void buttonDelete_EnabledChanged(object sender, EventArgs e)
-        {
-            if (buttonDelete.Enabled == false) {
+        private void buttonDelete_EnabledChanged(object sender, EventArgs e){
+            if (buttonDelete.Enabled == false)
                 buttonDelete.BackColor = Color.DarkGray;
-            }
-            else if (buttonDelete.Enabled == true) {
+            else if (buttonDelete.Enabled == true)
                 buttonDelete.BackColor = Color.Red;
-            }
         }
 
-        private void textSearch_TextChanged(object sender, EventArgs e)
-        {
-            stringQuery = "SELECT Product.product_id 'Product ID', Product.product_name 'Product Name', ProductType.productType_name 'Type', ProductCategory.productCategory_name 'Category', Product.product_description 'Description', Product.product_price 'Price', Product.product_quantity 'Qty.', ProductUnit.productUnit_name 'Unit' FROM Product INNER JOIN ProductUnit USING (productUnit_id) INNER JOIN ProductType USING (productType_id) INNER JOIN ProductCategory USING (productCategory_id) WHERE Product.product_id LIKE '%" + textSearch.Text + "%' OR Product.product_name LIKE '%" + textSearch.Text + "%'";
-            databaseCommand.DisplayRecords(stringQuery, dataGridProducts);
+
+        private void textSearch_TextChanged(object sender, EventArgs e){
+            string query = "SELECT Product.product_id 'Product ID', Product.product_name 'Product Name', ProductType.productType_name 'Type', ProductCategory.productCategory_name 'Category', Product.product_description 'Description', Product.product_price 'Price', Product.product_quantity 'Qty.', ProductUnit.productUnit_name 'Unit' FROM Product INNER JOIN ProductUnit USING (productUnit_id) INNER JOIN ProductType USING (productType_id) INNER JOIN ProductCategory USING (productCategory_id) WHERE Product.product_id LIKE '%" + textSearch.Text + "%' OR Product.product_name LIKE '%" + textSearch.Text + "%'";
+            dbCom.DisplayRecords(query, dataGridProducts);
         }
 
-        private void labelProductName_Click(object sender, EventArgs e)
-        {
+        private void labelProductName_Click(object sender, EventArgs e){}
 
-        }
-
-        private void labelHeader_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void labelHeader_Click(object sender, EventArgs e){}
     }
 }
